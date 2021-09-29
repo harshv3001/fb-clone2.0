@@ -25,7 +25,7 @@ const contacts = [
   },
 ];
 
-function Chat() {
+function Contacts() {
   return (
     <div className="hidden lg:flex flex-col w-60 py-2 px-4 mt-5">
       <div className="flex justify-between items-center text-gray-500 mb-5">
@@ -47,4 +47,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default Contacts;
