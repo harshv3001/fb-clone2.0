@@ -14,8 +14,8 @@ function CreateStory({ profileSrc }) {
         layout="fixed"
       />
       <div className="flex flex-col items-center  z-50">
-        <div className="absolute bottom-12 bg-white rounded-full p-1">
-          <PlusCircleIcon className="text-blue-500 font-medium h-10 w-10" />
+        <div className="absolute bottom-12 bg-white rounded-full ">
+          <PlusCircleIcon className="text-blue-500 font-medium h-12 w-12" />
         </div>
         <div className="absolute bottom-5 font-medium">Create story</div>
       </div>

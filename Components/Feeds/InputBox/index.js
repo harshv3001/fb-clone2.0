@@ -4,9 +4,8 @@ import { useSession } from "next-auth/client";
 import { EmojiHappyIcon } from "@heroicons/react/outline";
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid";
 import { useRef, useState } from "react";
-import { db, storage } from "../firebase";
+import { db, storage } from "../../../firebase";
 import firebase from "@firebase/app-compat";
-import Post from "./Post";
 
 function InputBox() {
   const [session] = useSession();
@@ -75,7 +74,7 @@ function InputBox() {
     setImageToPost(null);
   };
   return (
-    <div className="bg-white p-2 rounded-2xl shadow-md text-gray-500 font-medium mt-6">
+    <div className="bg-white p-2 rounded-2xl shadow-md text-gray-500 font-medium my-6">
       <div className="flex space-x-4 p-4 items-center">
         <Image
           className="rounded-full"
