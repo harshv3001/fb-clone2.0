@@ -1,7 +1,8 @@
+import Sidebar from "../Components/Messenger/Sidebar";
 function Messanger() {
   return (
     <div>
-      <h1>Hii</h1>
+      <Sidebar />
     </div>
   );
 }

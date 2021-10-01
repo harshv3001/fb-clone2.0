@@ -1,6 +1,8 @@
 import CreateStory from "./CreateStory";
 import StoryCard from "./StoryCard";
-import { useSession } from "next-auth/client";
+
+import { auth } from "../../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const stories = [
   {
@@ -25,10 +27,10 @@ const stories = [
   },
 ];
 function Stories() {
-  const [session, loading] = useSession();
+  const [user] = useAuthState(auth);
   return (
     <div className="flex justify-center space-x-3 mx-auto">
-      <CreateStory profileSrc={session.user.image} />
+      <CreateStory profileSrc={user.photoURL} />
       {stories.map((story) => (
         <StoryCard
           key={story.image}

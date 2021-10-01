@@ -3,12 +3,13 @@ import Head from "next/head";
 import Contacts from "../Components/Contacts";
 import Feed from "../Components/Feeds";
 import Header from "../Components/Header";
-import Login from "../Components/Public/Login";
+// import Login from "./login";
 import Sidebar from "../Components/Sidebar";
 import { db } from "../firebase";
 
-export default function Home({ session, posts }) {
-  if (!session) return <Login />;
+export default function Home(posts) {
+  // const user = null;
+  // if (!user) return <Login />;
   return (
     <div className="bg-gray-100 overflow-hidden ">
       <Head>
@@ -40,7 +41,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      session,
+      session: session,
       posts: docs,
     },
   };

@@ -1,17 +1,17 @@
 import {
-  DotsHorizontalIcon,
   VideoCameraIcon,
+  PencilAltIcon,
+  DotsHorizontalIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
-import Contact from "./Contact";
 import * as EmailValidator from "email-validator";
-import { auth, db } from "../../firebase";
+import { auth, db } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import ChatList from "./ChatList";
 
-function Contacts() {
+function Sidebar() {
   const [user] = useAuthState(auth);
-
   const userChatRef = db
     .collection("chats")
     .where("users", "array-contains", user.email);
@@ -41,32 +41,34 @@ function Contacts() {
     );
 
   return (
-    <div className="hidden lg:flex flex-col py-2 px-4 mt-5">
-      <div className="flex justify-between items-center text-gray-500 mb-5">
-        <h2 className="text-xl">Messenger</h2>
-        <div className="flex space-x-2">
-          <VideoCameraIcon className="h-6" />
-          <DotsHorizontalIcon className="h-6" />
+    <div>
+      <div className="flex sticky top-0 bg-white z-10 justify-between items-center h-7 p-5 ">
+        <span className="font-bold text-2xl">Messenger</span>
+        <div className="flex space-x-4">
+          <DotsHorizontalIcon className="w-7 text-gray-500  " />
+          <VideoCameraIcon className="w-7 text-gray-500  " />
+          <PencilAltIcon className="w-7 text-gray-500 " />
         </div>
       </div>
-      <div className="flex p-2 space-x-1 items-center rounded-full  bg-gray-200">
-        <SearchIcon className="h-5 w-5 text-gray-500" />
+      <div className="flex items-center p-2 rounded-full bg-gray-100">
+        <SearchIcon className="h-5 w-5 text-gray-400 " />
         <input
-          className="bg-gray-200 focus:outline-none"
           placeholder="Search Messenger"
+          className=" bg-gray-100 flex-1 focus:outline-none"
         />
       </div>
       <button
-        className=" my-4 p-3 text-xl uppercase w-full"
+        className="bg-gray-100 my-4 p-3 text-xl uppercase w-full"
         onClick={() => createChat()}
       >
         Start a new chat
       </button>
+      {/* lists of chats */}
       {chatsSnapshot?.docs.map((chat) => (
-        <Contact key={chat.id} id={chat.id} users={chat.data().users} />
+        <ChatList key={chat.id} id={chat.id} user={chat.data().users} />
       ))}
     </div>
   );
 }
 
-export default Contacts;
+export default Sidebar;

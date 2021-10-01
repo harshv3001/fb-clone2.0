@@ -13,7 +13,7 @@ function SidebarRow({ src, Icon, title }) {
         />
       )}
       {Icon && <Icon className="h-8 w-8 text-blue-500" />}
-      <p className="hidden xl:inline-flex font-medium ">{title}</p>
+      <span className="hidden xl:inline-flex font-medium pr-28">{title}</span>
     </div>
   );
 }

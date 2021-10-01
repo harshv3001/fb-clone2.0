@@ -14,10 +14,12 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import HeaderIcon from "./HeaderIcon";
-import { useSession, signOut } from "next-auth/client";
+import "firebase/compat/auth";
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Header() {
-  const [session] = useSession();
+  const [user] = useAuthState(auth);
 
   return (
     <div className="sticky top-0 z-50 bg-white flex items-center p-2 lg:px-5 shadow-md">
@@ -52,15 +54,15 @@ function Header() {
       {/* Right */}
       <div className="flex items-center sm:space-x-2 justify-end">
         <Image
-          onClick={signOut}
+          onClick={() => auth.signOut()}
           className="rounded-full cursor-pointer"
-          src={session.user.image}
+          src={user.photoURL}
           width="40"
           height="40"
           layout="fixed"
         />
         <p className="font-semibold pr-3 whitespace-nowrap">
-          {session.user.name}
+          {user.displayName}
         </p>
         <ViewGridIcon className="icon" />
         <ChatIcon className="icon" />
