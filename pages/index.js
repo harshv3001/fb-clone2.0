@@ -6,7 +6,7 @@ import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
 import { db } from "../firebase";
 
-export default function Home(posts) {
+export default function Home({ session, posts }) {
   return (
     <div className="bg-gray-100 overflow-hidden max-h-screen ">
       <Head>

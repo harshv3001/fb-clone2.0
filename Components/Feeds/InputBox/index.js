@@ -1,5 +1,5 @@
 import Image from "next/image";
-// import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 
 import { EmojiHappyIcon } from "@heroicons/react/outline";
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid";
@@ -10,58 +10,58 @@ import { auth } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 function InputBox() {
-  // const [session] = useSession();
+  const [session] = useSession();
   const inputRef = useRef(null);
   const filepickerRef = useRef(null);
   const [imageToPost, setImageToPost] = useState(null);
   const [user] = useAuthState(auth);
 
-  // const sendPost = (e) => {
-  //   e.preventDefault();
+  const sendPost = (e) => {
+    e.preventDefault();
 
-  //   if (!inputRef.current.value) return;
+    if (!inputRef.current.value) return;
 
-  //   db.collection("posts")
-  //     .add({
-  //       message: inputRef.current.value,
-  //       name: session.user.name,
-  //       email: session.user.email,
-  //       image: session.user.image,
-  //       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  //     })
-  //     .then((doc) => {
-  //       if (imageToPost) {
-  //         const uploadTask = storage
-  //           .ref(`posts/${doc.id}`)
-  //           .putString(imageToPost, "data_url");
+    db.collection("posts")
+      .add({
+        message: inputRef.current.value,
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((doc) => {
+        if (imageToPost) {
+          const uploadTask = storage
+            .ref(`posts/${doc.id}`)
+            .putString(imageToPost, "data_url");
 
-  //         removeImage();
+          removeImage();
 
-  //         uploadTask.on(
-  //           "state_change",
-  //           null,
-  //           (error) => console.log(error),
-  //           () => {
-  //             // when the upload completes
-  //             storage
-  //               .ref("posts")
-  //               .child(doc.id)
-  //               .getDownloadURL()
-  //               .then((url) => {
-  //                 db.collection("posts").doc(doc.id).set(
-  //                   {
-  //                     postImage: url,
-  //                   },
-  //                   { merge: true }
-  //                 );
-  //               });
-  //           }
-  //         );
-  //       }
-  //     });
+          uploadTask.on(
+            "state_change",
+            null,
+            (error) => console.log(error),
+            () => {
+              // when the upload completes
+              storage
+                .ref("posts")
+                .child(doc.id)
+                .getDownloadURL()
+                .then((url) => {
+                  db.collection("posts").doc(doc.id).set(
+                    {
+                      postImage: url,
+                    },
+                    { merge: true }
+                  );
+                });
+            }
+          );
+        }
+      });
 
-  //   inputRef.current.value = "";
-  // };
+    inputRef.current.value = "";
+  };
   const addImagetoPost = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
@@ -93,9 +93,9 @@ function InputBox() {
             ref={inputRef}
             placeholder={`What's on your mind, Harsh Verma ?`}
           />
-          {/* <button hidden type="submit" onClick={sendPost}>
+          <button hidden type="submit" onClick={sendPost}>
             submit
-          </button> */}
+          </button>
         </form>
         {imageToPost && (
           <div

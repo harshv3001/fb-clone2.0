@@ -16,7 +16,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 function Sidebar() {
   const [user] = useAuthState(auth);
   return (
-    <div className=" hidden lg:block p-2 mt-5">
+    <div className=" hidden xl:block p-2 mt-5">
       <SidebarRow src={user.photoURL} title={user.displayName} />
       <SidebarRow Icon={UserGroupIcon} title="Groups" />
       <SidebarRow Icon={ShoppingBagIcon} title="Marketplace" />
