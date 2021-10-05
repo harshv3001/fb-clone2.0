@@ -13,13 +13,16 @@
     "better-react-spinkit": "^2.0.4",
     "email-validator": "^2.0.4",
     "firebase": "^9.1.0",
+    "moment": "^2.29.1",
     "next": "11.1.2",
     "next-auth": "^3.29.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-firebase-hooks": "^3.0.4",
+    "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.1",
-    "tailwind-scrollbar-hide": "^1.0.3"
+    "tailwind-scrollbar-hide": "^1.0.3",
+    "timeago-react": "^3.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.6",

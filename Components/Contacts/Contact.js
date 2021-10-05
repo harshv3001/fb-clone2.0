@@ -4,8 +4,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../firebase";
+import { useRouter } from "next/router";
 
 function Contact({ id, users }) {
+  const router = useRouter();
   const [user] = useAuthState(auth);
   const [recipienSnapshot] = useCollection(
     db.collection("user").where("email", "==", getRecipientEmail(users, user))
@@ -13,8 +15,14 @@ function Contact({ id, users }) {
   const recipient = recipienSnapshot?.docs?.[0]?.data();
   const recipientEmail = getRecipientEmail(users, user);
 
+  const enterChat = () => {
+    router.push(`/chat/${id}`);
+  };
   return (
-    <div className="flex items-center space-x-3 mb-2 relative hover:bg-gray-200 cursor-pointer p-2 rounded-xl ">
+    <div
+      onClick={enterChat}
+      className="flex items-center space-x-3 mb-2 relative hover:bg-gray-200 cursor-pointer p-2 rounded-xl "
+    >
       {recipient && (
         <Image
           className="rounded-full"

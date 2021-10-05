@@ -2,12 +2,7 @@ module.exports = {
   node: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-    screen: {
-      "2md": "900px",
-    },
-  },
+  theme: {},
   variants: {
     background: ["responsive", "hover"],
     extend: {
