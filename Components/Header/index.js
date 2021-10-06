@@ -17,6 +17,7 @@ import HeaderIcon from "./HeaderIcon";
 import "firebase/compat/auth";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "../../Utils/link";
 
 function Header() {
   const [user] = useAuthState(auth);
@@ -25,12 +26,14 @@ function Header() {
     <div className="sticky top-0 z-50 bg-white flex items-center p-2 lg:px-5 shadow-md">
       {/* left */}
       <div className="flex items-center">
-        <Image
-          src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg"
-          width={50}
-          height={50}
-          layout="fixed"
-        />
+        <Link href="/">
+          <Image
+            src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg"
+            width={50}
+            height={50}
+            layout="fixed"
+          />
+        </Link>
         <div className="flex ml-2 items-center rounded-full bg-gray-100 p-2">
           <SearchIcon className="h-5 text-gray-600" />
           <input

@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
       db.collection("user").doc(user.uid).set(
         {
           email: user.email,
+          displayName: user.displayName,
           lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
           photoURL: user.photoURL,
         },

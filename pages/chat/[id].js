@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
   const ref = db.collection("chats").doc(context.query.id);
 
   //PREP the messages on the server
+
   const messageRes = await ref
     .collection("messages")
     .orderBy("timestamp", "asc")
@@ -54,7 +55,7 @@ export async function getServerSideProps(context) {
     id: chatRes.id,
     ...chatRes.data(),
   };
-  console.log(chat, messages);
+  //console.log(chat, messages);
   return {
     props: {
       messages: JSON.stringify(messages),

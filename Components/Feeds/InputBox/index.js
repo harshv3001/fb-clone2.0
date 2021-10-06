@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/client";
 
 import { EmojiHappyIcon } from "@heroicons/react/outline";
-import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid";
+import { VideoCameraIcon, PhotographIcon } from "@heroicons/react/solid";
 import { useRef, useState } from "react";
 import { db, storage } from "../../../firebase";
 import firebase from "@firebase/app-compat";
@@ -118,7 +118,7 @@ function InputBox() {
           onClick={() => filepickerRef.current.click()}
           className="inputIcon"
         >
-          <CameraIcon className="h-7 text-green-400" />
+          <PhotographIcon className="h-7 text-green-400" />
           <p className="text-xs sm:text-sm xl:text-base">Photo/Video</p>
           <input
             ref={filepickerRef}

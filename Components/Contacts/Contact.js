@@ -23,17 +23,16 @@ function Contact({ id, users }) {
       onClick={enterChat}
       className="flex items-center space-x-3 mb-2 relative hover:bg-gray-200 cursor-pointer p-2 rounded-xl "
     >
-      {recipient && (
-        <Image
-          className="rounded-full"
-          src={recipient?.photoURL}
-          objectFit="cover"
-          width={50}
-          height={50}
-          layout="fixed"
-        />
-      )}
-      <p>{recipientEmail}</p>
+      <Image
+        className="rounded-full"
+        src={recipient ? recipient?.photoURL : "/user.png"}
+        objectFit="cover"
+        width={50}
+        height={50}
+        layout="fixed"
+      />
+
+      <p>{recipient ? recipient.displayName : recipientEmail}</p>
       {/* <div className="absolute bottom-2 left-7 bg-green-400 h-3 w-3 rounded-full"></div> */}
     </div>
   );

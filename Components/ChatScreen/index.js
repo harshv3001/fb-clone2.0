@@ -92,14 +92,16 @@ function ChatScreen({ chat, messages }) {
       <div className="sticky bg-white z-100 top-0 flex p-3 items-center border-b-2 border-gray-200">
         <Image
           className="rounded-full"
-          src={recipient ? recipient?.photoURL : "/stories/5.jpeg"}
+          src={recipient ? recipient?.photoURL : "/user.png"}
           objectFit="cover"
           width={50}
           height={50}
           layout="fixed"
         />
         <div className="ml-2 flex-1">
-          <h3 className="font-bold">{recipientEmail}</h3>
+          <h3 className="font-bold">
+            {recipient ? recipient.displayName : recipientEmail}
+          </h3>
           {recipientSnapshot ? (
             <p className="text-sm text-gray-500">
               Active{" "}
