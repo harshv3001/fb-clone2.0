@@ -3,6 +3,7 @@ import StoryCard from "./StoryCard";
 
 import { auth } from "../../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "../../../Utils/link";
 
 const stories = [
   {

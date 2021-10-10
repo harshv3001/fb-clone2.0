@@ -57,7 +57,7 @@ function Contacts() {
         />
       </div>
       <button
-        className=" my-4 p-3 text-xl uppercase w-full hover:bg-gray-100"
+        className=" my-4 p-3 text-xl uppercase w-full hover:bg-gray-200"
         onClick={() => createChat()}
       >
         Start a new chat
