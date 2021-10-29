@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { XCircleIcon, CogIcon } from "@heroicons/react/solid";
+import { XIcon, CogIcon } from "@heroicons/react/solid";
 import { Link } from "../../Utils/link";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -26,9 +26,9 @@ function StorySidebar({ imageToStory, setImageToStory }) {
       <Container>
         <div className="bg-white shadow-lg flex flex-col min-h-full ">
           <div className="flex items-center px-2 border-b-2">
-            <XCircleIcon
+            <XIcon
               onClick={closeCreateStory}
-              className="h-12 w-12 mb-2 text-gray-400 cursor-pointer hover:text-gray-500 "
+              className="h-11 mb-2 text-white bg-gray-400 rounded-full p-2 cursor-pointer hover:bg-gray-500  "
             />
             <Link href="/">
               <Image

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { XCircleIcon } from "@heroicons/react/solid";
+import { XIcon } from "@heroicons/react/solid";
 import router from "next/router";
 
 function DiscardModel({
@@ -23,8 +23,8 @@ function DiscardModel({
       <Container isdiscardClicked={isdiscardClicked}>
         <div className="flex justify-between items-center pl-4 pr-3 py-2 border-b-2">
           <ConfirmationHeader>Discard story?</ConfirmationHeader>
-          <XCircleIcon
-            className="h-12 w-12  text-gray-300 cursor-pointer hover:text-gray-400 "
+          <XIcon
+            className="h-8 mb-2 text-gray-600 bg-gray-200 rounded-full p-1 cursor-pointer hover:bg-gray-300 "
             onClick={() => setIsdiscardClicked(false)}
           />
         </div>
@@ -48,7 +48,6 @@ function DiscardModel({
 
 export default DiscardModel;
 
-/* The CSS */
 const Container = styled.div`
   display: ${(props) => (props.isdiscardClicked ? "flex" : "none")};
   flex-direction: column;
@@ -59,7 +58,7 @@ const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -75%);
   border-radius: 0.6rem;
-  z-index: 5; /* Higher than the z-index of the background */
+  z-index: 5;
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2);
 `;
 
@@ -126,7 +125,6 @@ const ConfirmBg = styled.div`
   background-color: rgba(200, 200, 200, 1);
   opacity: 0.8;
   filter: brightness(2);
-  overflow: hidden; /* disable scrolling*/
-  z-index: 3; /* higher than all other items, but lower than 
-    the confirm box*/
+  overflow: hidden;
+  z-index: 3;
 `;

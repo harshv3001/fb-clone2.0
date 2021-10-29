@@ -45,8 +45,8 @@ function Contacts() {
       <div className="flex justify-between items-center text-gray-500 mb-5">
         <h2 className="text-xl">Messenger</h2>
         <div className="flex space-x-2">
-          <VideoCameraIcon className="h-6" />
-          <DotsHorizontalIcon className="h-6" />
+          <VideoCameraIcon className="h-9 hover:bg-gray-200 rounded-full p-2" />
+          <DotsHorizontalIcon className="h-9 hover:bg-gray-200 rounded-full p-2" />
         </div>
       </div>
       <div className="flex p-2 space-x-1 items-center rounded-full  bg-gray-200">
