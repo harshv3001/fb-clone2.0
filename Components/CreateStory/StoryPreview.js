@@ -93,6 +93,13 @@ function StoryPreview({ imageToStory }) {
                   </Styled.StoryImageContainer>
                 </DragMove>
               </Styled.StoryPreview>
+              <Styled.InputAddTestContainer>
+                <input
+                  type="text"
+                  className="focus:outline-none bg-transparent placeholder-white placeholder-opacity-90 text-3xl font-bold w-full"
+                  placeholder="Start typing"
+                />
+              </Styled.InputAddTestContainer>
             </div>
           </Styled.StoryPreviewOutsideContainer>
 

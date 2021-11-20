@@ -58,7 +58,7 @@ function StorySidebar({ imageToStory, setImageToStory }) {
                 <span>{user.displayName}</span>
               </div>
               {imageToStory && (
-                <div className="w-full flex space-x-4 items-center mt-4">
+                <div className="w-full flex space-x-4 items-center mt-4 p-2 rounded-lg cursor-pointer hover:bg-gray-100">
                   <div className="icon2">Aa</div>
                   <h2 className="text-lg font-medium">Add Text</h2>
                 </div>

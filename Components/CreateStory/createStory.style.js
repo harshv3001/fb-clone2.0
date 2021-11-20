@@ -112,6 +112,7 @@ export const StoryPreview = styled.div`
 `;
 export const StoryImageContainer = styled.div`
   cursor: pointer;
+  z-index: 1;
 `;
 
 export const RotateButton = styled.button`
@@ -124,4 +125,11 @@ export const RotateButton = styled.button`
   align-items: center;
   padding: 6px 8px;
   border-radius: 6px;
+`;
+
+export const InputAddTestContainer = styled.div`
+  position: absolute;
+  top: 13.2rem;
+  left: 8rem;
+  z-index: 3;
 `;
