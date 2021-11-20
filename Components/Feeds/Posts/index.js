@@ -17,6 +17,7 @@ function Posts({ posts }) {
               timestamp={post.data().timestamp}
               image={post.data().image}
               postImage={post.data().postImage}
+              backgroundColor={post.data().backgroundColor}
             />
           ))
         : posts.map((post) => (
@@ -27,6 +28,7 @@ function Posts({ posts }) {
               timestamp={post.timestamp}
               image={post.image}
               postImage={post.postImage}
+              backgroundColor={post.backgroundColor}
             />
           ))}
     </div>

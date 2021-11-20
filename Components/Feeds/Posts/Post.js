@@ -2,13 +2,15 @@ import Image from "next/image";
 import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/outline";
 import { ThumbUpIcon as FilledThumbUpIcon } from "@heroicons/react/solid";
 import { useState } from "react";
+import TimeAgo from "timeago-react";
 
-function Post({ name, message, timestamp, image, postImage }) {
+function Post({ name, message, timestamp, image, postImage, backgroundColor }) {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
     setIsLiked((prev) => !prev);
   };
+
   return (
     <div className="flex flex-col mb-5">
       <div className="p-5 bg-white rounded-t-2xl shadow-sm ">
@@ -18,24 +20,27 @@ function Post({ name, message, timestamp, image, postImage }) {
             width={40}
             height={40}
             alt=""
-            className="rounded=full"
+            className="rounded-full"
           />
           <div>
             <p className="font-medium">{name}</p>
             {timestamp ? (
               <p className="text-xs text-gray-400">
-                {new Date(timestamp?.toDate()).toLocaleString()}
+                {/* {new Date(timestamp?.toDate()).toLocaleString()} */}
+                {<TimeAgo datetime={timestamp?.toDate()} />}
               </p>
             ) : (
               <p className="text-xs text-gray-400">Loading..</p>
             )}
           </div>
         </div>
-        <p className="pt-4">{message}</p>
+        {message && <p className="pt-4">{message}</p>}
       </div>
       {postImage && (
-        <div className="relative h-56  md:h-96 bg-white">
-          <Image src={postImage} objectFit="cover" layout="fill" />
+        <div className="h-96" style={{ backgroundColor: `${backgroundColor}` }}>
+          <div className="relative h-full ">
+            <Image src={postImage} layout="fill" objectFit="contain"></Image>
+          </div>
         </div>
       )}
 

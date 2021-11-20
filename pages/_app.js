@@ -5,6 +5,7 @@ import Login from "./login";
 import Loading from "../Components/Loading";
 import { useEffect } from "react";
 import firebase from "firebase/compat/app";
+import { Provider } from "next-auth/client";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
@@ -25,7 +26,11 @@ function MyApp({ Component, pageProps }) {
 
   if (loading) return <Loading />;
   if (!user) return <Login />;
-  return <Component {...pageProps} />;
+  return (
+    <Provider session={pageProps.session}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
 export default MyApp;
