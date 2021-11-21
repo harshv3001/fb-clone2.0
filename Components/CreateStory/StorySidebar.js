@@ -8,7 +8,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import DiscardModel from "./DiscardModel";
 
-function StorySidebar({ imageToStory, setImageToStory }) {
+function StorySidebar({
+  imageToStory,
+  setImageToStory,
+  setIsAddTextClicked,
+  addTextRef,
+}) {
   const [user] = useAuthState(auth);
   const [isdiscardClicked, setIsdiscardClicked] = useState(false);
   const [isCloseClicked, setIsCloseClicked] = useState(false);
@@ -28,7 +33,7 @@ function StorySidebar({ imageToStory, setImageToStory }) {
           <div className="flex items-center px-2 border-b-2">
             <XIcon
               onClick={closeCreateStory}
-              className="h-11 mb-2 text-white bg-gray-400 rounded-full p-2 cursor-pointer hover:bg-gray-500  "
+              className="h-11 mb-2 text-white bg-gray-400 rounded-full p-2 cursor-pointer hover:bg-gray-500"
             />
             <Link href="/">
               <Image
@@ -58,7 +63,11 @@ function StorySidebar({ imageToStory, setImageToStory }) {
                 <span>{user.displayName}</span>
               </div>
               {imageToStory && (
-                <div className="w-full flex space-x-4 items-center mt-4 p-2 rounded-lg cursor-pointer hover:bg-gray-100">
+                <div
+                  ref={addTextRef}
+                  className="w-full flex space-x-4 items-center mt-4 p-2 rounded-lg cursor-pointer hover:bg-gray-100"
+                  onClick={() => setIsAddTextClicked(true)}
+                >
                   <div className="icon2">Aa</div>
                   <h2 className="text-lg font-medium">Add Text</h2>
                 </div>

@@ -6,7 +6,7 @@ import DragMove from "./DragMove";
 import { average } from "color.js";
 import { ReplyIcon } from "@heroicons/react/solid";
 
-function StoryPreview({ imageToStory }) {
+function StoryPreview({ imageToStory, isAddTextClicked, textInputRef }) {
   const [imageSize, setImageSize] = useState("10");
   const [imageRotate, setImageRotate] = useState([0, 90, 180, 270]);
   const [isImageSelected, setIsImageSelected] = useState(false);
@@ -17,6 +17,7 @@ function StoryPreview({ imageToStory }) {
   const imageRef = useRef(null);
   const imageCustomizeRef = useRef(null);
   const [prominentColor, setProminentColor] = useState({});
+  const [textInput, setTextInput] = useState(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -93,13 +94,17 @@ function StoryPreview({ imageToStory }) {
                   </Styled.StoryImageContainer>
                 </DragMove>
               </Styled.StoryPreview>
-              <Styled.InputAddTestContainer>
-                <input
-                  type="text"
-                  className="focus:outline-none bg-transparent placeholder-white placeholder-opacity-90 text-3xl font-bold w-full"
-                  placeholder="Start typing"
-                />
-              </Styled.InputAddTestContainer>
+              {isAddTextClicked && (
+                <Styled.InputAddTextContainer ref={textInputRef}>
+                  <Styled.InputAddTest
+                    type="text"
+                    placeholder="Start typing"
+                    autoFocus
+                    onChange={(e) => setTextInput(e.target.value)}
+                  />
+                </Styled.InputAddTextContainer>
+              )}
+              {textInput && <Styled.InputText>{textInput}</Styled.InputText>}
             </div>
           </Styled.StoryPreviewOutsideContainer>
 

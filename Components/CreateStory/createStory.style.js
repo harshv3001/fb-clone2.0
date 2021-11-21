@@ -127,9 +127,36 @@ export const RotateButton = styled.button`
   border-radius: 6px;
 `;
 
-export const InputAddTestContainer = styled.div`
+export const InputAddTextContainer = styled.div`
   position: absolute;
   top: 13.2rem;
   left: 8rem;
   z-index: 3;
+  width: 11rem;
+`;
+export const InputAddTest = styled.input`
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  color: white;
+  caret-color: white;
+  &:focus {
+    outline: none;
+  }
+  background: transparent;
+
+  &::placeholder {
+    color: white;
+    opacity: 0.9;
+  }
+`;
+
+export const InputText = styled.div`
+  position: absolute;
+  top: 15.2rem;
+  left: 8rem;
+  z-index: 3;
+  width: 11rem;
 `;
