@@ -76,6 +76,7 @@ export const CreateStoryBlackContainer = styled.div`
   border-radius: 8px;
   background-color: #18191a;
   display: flex;
+  overflow: hidden;
 `;
 
 export const StoryPreviewOutsideContainer = styled.div`
@@ -112,7 +113,7 @@ export const StoryPreview = styled.div`
 `;
 export const StoryImageContainer = styled.div`
   cursor: pointer;
-  z-index: 1;
+  z-index: 100;
 `;
 
 export const RotateButton = styled.button`
@@ -130,18 +131,22 @@ export const RotateButton = styled.button`
 export const InputAddTextContainer = styled.div`
   position: absolute;
   top: 13.2rem;
-  left: 8rem;
   z-index: 3;
-  width: 11rem;
+  width: 23rem;
 `;
-export const InputAddTest = styled.input`
+export const InputAddTest = styled.textarea`
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 700;
   width: 100%;
+  height: auto;
   text-align: center;
   color: white;
   caret-color: white;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  resize: none;
   &:focus {
     outline: none;
   }
@@ -154,9 +159,7 @@ export const InputAddTest = styled.input`
 `;
 
 export const InputText = styled.div`
-  position: absolute;
-  top: 15.2rem;
-  left: 8rem;
-  z-index: 3;
-  width: 11rem;
+  position: relative;
+  left: 50%;
+  top: 50%;
 `;

@@ -1,78 +1,24 @@
 import Head from "next/head";
-import StorySidebar from "../../Components/CreateStory/StorySidebar";
-import StoryPreview from "../../Components/CreateStory/StoryPreview";
-import { Container } from "../../Components/CreateStory/createStory.style";
-import CreateStory from "../../Components/CreateStory/CreateStory";
-import { useRef, useState, useEffect } from "react";
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import dynamic from "next/dynamic";
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("../../Components/CreateStory/CreateMain"),
+  { ssr: false }
+);
 
 function create() {
-  const [imageToStory, setImageToStory] = useState(null);
-  const [isAddTextClicked, setIsAddTextClicked] = useState(false);
-  const filepickerRef = useRef(null);
-  const textInputRef = useRef(null);
-  const addTextRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (textInputRef.current && textInputRef.current.contains(event.target)) {
-        setIsAddTextClicked(true);
-      } else if (
-        addTextRef.current &&
-        !addTextRef.current.contains(event.target)
-      ) {
-        setIsAddTextClicked(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [addTextRef]);
-
-  const addImagetoStoryHandler = (e) => {
-    const reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-
-    reader.onload = (readerEvent) => {
-      setImageToStory(readerEvent.target.result);
-    };
-  };
-
   return (
-    <div>
+    <DndProvider backend={HTML5Backend}>
       <Head>
         <title>Create Stories</title>
       </Head>
       <main className="bg-gray-200 ">
-        <div className="flex h-screen">
-          <StorySidebar
-            imageToStory={imageToStory}
-            setImageToStory={setImageToStory}
-            setIsAddTextClicked={setIsAddTextClicked}
-            addTextRef={addTextRef}
-          />
-          <Container>
-            <div className="flex flex-col h-full items-center justify-center">
-              {!imageToStory ? (
-                <CreateStory
-                  filepickerRef={filepickerRef}
-                  addImagetoStory={addImagetoStoryHandler}
-                />
-              ) : (
-                <StoryPreview
-                  imageToStory={imageToStory}
-                  isAddTextClicked={isAddTextClicked}
-                  textInputRef={textInputRef}
-                />
-              )}
-            </div>
-          </Container>
-        </div>
+        <DynamicComponentWithNoSSR />
       </main>
-    </div>
+    </DndProvider>
   );
 }
 
